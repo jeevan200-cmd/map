@@ -1,3 +1,13 @@
+---
+title: Smart City Traffic Platform
+emoji: 🚗
+colorFrom: blue
+colorTo: purple
+sdk: docker
+pinned: true
+license: mit
+---
+
 # AI-Powered Traffic Monitoring System
 
 ## Overview
