@@ -207,14 +207,76 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); co
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 .pulse { animation: pulse 2s infinite; }
 
-/* Responsive */
+/* Mobile Menu Toggle */
+.mobile-menu-btn { display: none; position: fixed; bottom: 20px; right: 20px; z-index: 9999; width: 56px; height: 56px;
+    background: var(--primary); border: none; border-radius: 50%; color: #fff; font-size: 1.5rem; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(26,115,232,0.4); }
+.mobile-close-btn { display: none; position: absolute; top: 10px; right: 10px; background: var(--danger); border: none;
+    border-radius: 50%; width: 36px; height: 36px; color: #fff; font-size: 1.2rem; cursor: pointer; z-index: 1001; }
+
+/* Responsive - Tablet */
 @media (max-width: 1200px) {
     .sidebar { width: 260px; }
     .header-stats { gap: 10px; }
     .stat-box { padding: 6px 12px; min-width: 70px; }
 }
-@media (max-width: 900px) {
-    .main-container { flex-direction: column; }
-    .sidebar { width: 100%; height: auto; max-height: 300px; }
-    .map-area { height: 400px; }
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .header { flex-direction: column; gap: 10px; padding: 10px; }
+    .header-left .logo h1 { font-size: 1rem; }
+    .header-left .logo .tagline { display: none; }
+    .header-stats { flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .stat-box { padding: 5px 10px; min-width: 60px; }
+    .stat-box i { font-size: 1rem; }
+    .stat-box span { font-size: 1rem; }
+    .stat-box label { font-size: 0.6rem; }
+    .header-right { width: 100%; justify-content: center; }
+    .btn-admin { padding: 8px 12px; font-size: 0.8rem; }
+    
+    .main-container { flex-direction: column; height: auto; }
+    .sidebar { position: fixed; top: 0; left: -100%; width: 85%; max-width: 320px; height: 100vh; z-index: 1000;
+        transition: left 0.3s ease; box-shadow: 5px 0 20px rgba(0,0,0,0.3); }
+    .sidebar.active { left: 0; }
+    .right-sidebar { left: auto; right: -100%; }
+    .right-sidebar.active { right: 0; left: auto; }
+    .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+    .mobile-close-btn { display: block; }
+    
+    .map-area { width: 100%; height: calc(100vh - 140px); }
+    .map-controls { top: 10px; right: 10px; }
+    .map-controls button { width: 36px; height: 36px; }
+    .legend { bottom: 80px; left: 10px; padding: 8px; font-size: 0.75rem; }
+    .legend h4 { font-size: 0.8rem; }
+    .search-box { top: 10px; left: 10px; right: 60px; }
+    .search-box input { padding: 10px 12px; font-size: 0.85rem; }
+    
+    .vehicle-grid { grid-template-columns: repeat(4, 1fr); gap: 5px; }
+    .v-item { padding: 6px; }
+    .v-item i { font-size: 1.2rem; }
+    .v-item span { font-size: 0.9rem; }
+    .v-item small { font-size: 0.6rem; }
+    
+    .sidebar-section h3 { font-size: 0.85rem; }
+    .toggle { font-size: 0.8rem; }
+    .toggle .slider { width: 36px; height: 20px; }
+    .toggle .slider:before { width: 16px; height: 16px; }
+    .toggle input:checked + .slider:before { transform: translateX(16px); }
+    
+    .camera-list { max-height: 150px; }
+    .camera-item { padding: 8px; }
+    .camera-item .name { font-size: 0.85rem; }
+    
+    /* Modal mobile */
+    .modal-content { width: 95%; max-height: 90vh; margin: 5vh auto; }
 }
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .header-stats { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .stat-box.time-box { grid-column: span 3; }
+    .vehicle-grid { grid-template-columns: repeat(4, 1fr); }
+    .theme-switcher { gap: 3px; }
+    .theme-switcher button { width: 30px; height: 30px; }
+}
+

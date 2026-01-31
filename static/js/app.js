@@ -418,4 +418,33 @@ function updateTime() {
     document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 
+// Mobile Menu Functions
+function openSidebar() {
+    document.getElementById('leftSidebar').classList.add('active');
+}
+
+function closeSidebar() {
+    document.getElementById('leftSidebar').classList.remove('active');
+}
+
+// Mobile menu button handler
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    if (menuBtn) {
+        menuBtn.addEventListener('click', openSidebar);
+    }
+    
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+        const sidebar = document.getElementById('leftSidebar');
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        if (sidebar && sidebar.classList.contains('active') && 
+            !sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+            closeSidebar();
+        }
+    });
+});
+
 window.showCameraDetail = showCameraDetail;
+window.closeSidebar = closeSidebar;
+
